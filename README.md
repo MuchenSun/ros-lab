@@ -11,7 +11,7 @@ You can pull the image by executing:
 docker pull muchensun/ros_turtlebot3_vnc:v0.0
 ~~~
 
-### Built image from local Doc 
+### Built image from local Dockerfile 
 You can clone this repository, then built the image by executing:
 
 ~~~
