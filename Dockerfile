@@ -40,4 +40,6 @@ RUN /bin/bash -c 'apt-get -y install ros-kinetic-joy \
     && catkin_make \
     && echo "source /opt/ros/kinetic/setup.bash" >> /root/.bashrc \
     && echo "source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc \
-    && source /root/.bashrc'
+    && source /root/.bashrc \
+    && apt-get -y install wget vim terminator\
+    && wget -O /root/.vimrc https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim'

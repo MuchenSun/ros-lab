@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd ..
+pwd
+docker build -t muchensun/ros_turtlebot3_vnc:v0.1 .
