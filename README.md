@@ -1,60 +1,21 @@
 # ROS TurtleBot3 VNC Docker Image
-This docker image is built for turtlebot3 developers. It's based on another docker image "[dorowu/ubuntu-desktop-lxde-vnc](https://github.com/fcwu/docker-ubuntu-vnc-desktop)", which provides HTML5 VNC interface to access Ubuntu 16.04 LXDE desktop environment.
+A Docker-based virtual lab of Robot Operating System to help beginners learn and practise. It's based on docker image "muchensun/ros_turtlebot3_vnc", which is based on docker image ["dorowu/ubuntu-desktop-lxde-vnc"](https://github.com/fcwu/docker-ubuntu-vnc-desktop), and wrapped by a read-eval-print loop(REPL) interface implemented with Python.
 
-![launch test](./image/turtlebot3.jpg)
-
-## Quick Start (only for Linux/MacOS users)
-Clone the repository, then execute:
-
-~~~
-git clone https://github.com/MuchenSun/ros_turtlebot3_vnc.git
-tools/launch
-~~~
+![launch test](https://github.com/muchensun/ros-lab/image/turtlebot3.jpg)
 
 ## Installation
-### Method 1: Pull from [Docker Hub](https://hub.docker.com/r/muchensun/ros_turtlebot3_vnc/)
-You can pull the image down by executing:
+Use `pip` to install, type following command:
 
 ~~~
-docker pull muchensun/ros_turtlebot3_vnc:v0.1
+pip install ros-lab
 ~~~
 
-### Method 2: Built image from local Dockerfile 
-First, clone this repository:
+## How to use
+1. Type `ros-lab` in command line, you will enter ros-lab
+2. Input `help` or `?` for command information
+3. Have fun with ros-lab !
 
-~~~
-git clone https://github.com/MuchenSun/ros_turtlebot3_vnc.git
-~~~
-
-Then built the image by executing:
-
-~~~
-cd ros_turtlebot3_vnc
-docker build -t muchensun/ros_turtlebot3_vnc:v0.1 .
-~~~
-
-## Run the container
-You can start a container by:
-
-~~~
-docker run -e RESOLUTION=1280x800 -p 6080:80 muchensun/ros_turtlebot3_vnc:v0.1
-~~~
-
-Then browse [http://127.0.0.1:6080/](http://127.0.0.1:6080/)
-
-## Test
-In the browser, open a terminal, then execute:
-
-~~~
-export TURTLEBOT3_MODEL=burger
-roslaunch turtlebot3_gazebo turtlebot3_house.launch
-~~~
-
-You should see the following (first time launching might be slow)
-
-![launch test](./image/gazebo.jpg)
-
-*network connection is required to load the robot model.*
+![launch test](https://github.com/muchensun/ros-lab/image/gazebo.jpg)
 
 ## Reference
 * This work is finished in [Distributed & Embedded System Lab](http://dslab.lzu.edu.cn/), Lanzhou University.
