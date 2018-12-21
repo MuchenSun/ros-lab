@@ -1,11 +1,11 @@
 #-*- encoding: UTF-8 -*-
 from setuptools import setup, find_packages
 
-VERSION = '0.3'
+VERSION = '0.6'
 
-# with open("README.md", "r") as fh:
-#     long_description = fh.read()
-long_description = 'A Docker-based virtual lab of Robot Operating System to help beginners learn and practise. It\'s based on docker image "muchensun/ros_turtlebot3_vnc", which is based on docker image "dorowu/ubuntu-desktop-lxde-vnc", and wrapped by a read-eval-print loop(REPL) interface implemented with Python.'
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+# long_description = 'A Docker-based virtual lab of Robot Operating System to help beginners learn and practise. It\'s based on docker image "muchensun/ros_turtlebot3_vnc", which is based on docker image "dorowu/ubuntu-desktop-lxde-vnc", and wrapped by a read-eval-print loop(REPL) interface implemented with Python.'
 
 setup(
     name='ros-lab',
@@ -15,7 +15,7 @@ setup(
 
     description="Docker-Based Virtual ROS Lab for Beginners",
     long_description=long_description,
-    # long_description_content_type="text/markdown",
+    long_description_content_type="text/markdown",
     url='https://github.com/muchensun/ros-lab',
 
     packages=find_packages(),
@@ -31,7 +31,7 @@ setup(
 
     entry_points={
         'console_scripts':[
-            'ros-lab = lab.main:lab'
+            'ros-lab = src.main:lab',
         ]
     },
 )
