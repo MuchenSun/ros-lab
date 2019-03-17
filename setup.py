@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = 'pre-alpha'
+VERSION = '0.0.0'
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -14,7 +14,7 @@ setup(
     description = 'Docker-Based Robot Operating System Virtual Lab',
     long_description = long_description,
     long_description_content_type = "text/markdown",
-    url='https://github.com/MuchenSun/ros-lab'
+    url='https://github.com/MuchenSun/ros-lab',
     
     packages = find_packages(),
     include_package_data=True,

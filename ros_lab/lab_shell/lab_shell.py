@@ -1,8 +1,9 @@
 import cmd, sys
 import docker
+import webbrowser
 
 class lab_shell(cmd.Cmd):
-    intro = 'The ROS Virtual Lab. Type \'help\' or \'?\' for help.'
+    intro = '\nThe ROS Virtual Lab. Type \'help\' or \'?\' for help.'
     prompt = '\nLab >> '
     lab_state = {
         0: 'not loaded',
@@ -16,7 +17,7 @@ class lab_shell(cmd.Cmd):
     def __init__(self):
         super(lab_shell, self).__init__()
         self.lab_list = {
-            0: ['TurtleBot3 Basic Lab', self.lab_state[0], 'muchensun/ros_turtlebot3_vnc:v0.1']
+            0: ['TurtleBot3 Basic Lab', self.lab_state[0], 'muchensun/ros_turtlebot3_vnc:v0.2']
         }
 
     def do_list_lab(self, arg):
@@ -37,10 +38,12 @@ class lab_shell(cmd.Cmd):
             print("Argumene is required. Typr \"help start_lab\" for more information")
         else:
             if arg in self.lab_list:
-                print(self.lab_list[arg][2])
+                print("The docker image " + "\"" + self.lab_list[arg][2] + "\"" + " is loading, please wait ...")
                 temp_image = self.client.images.pull(self.lab_list[arg][2])
                 self.lab_list[arg][1] = self.lab_state[1]
                 self.image_id.append(temp_image.id)
+                print("The docker image " + "\"" + self.lab_list[arg][2] + "\"" + " is loaded.")
+                
             else:
                 print('Invalid lab number!')
 
@@ -49,7 +52,7 @@ class lab_shell(cmd.Cmd):
         try:
             arg = int(arg)
         except ValueError:
-            print("Argumene is required. Typr \"help start_lab\" for more information")
+            print("Argumene is required. Typr \"help start_lab\" for more information.")
         else:
             self.do_load_lab(arg)
             if arg in self.lab_list:
@@ -57,7 +60,8 @@ class lab_shell(cmd.Cmd):
                                                             command='echo TurtleBot3 Basic Lab Initialized',
                                                             ports={'80/tcp': ('127.0.0.1', 6080)}, detach=True)
                 self.container_id.append(temp_container.id)
-                print("Lab successfully initialized. Visit 127.0.0.1:6080 in your browser")
+                print("Lab successfully initialized. Visit 127.0.0.1:6080 in your browser.")
+                webbrowser.open_new("127.0.0.1:6080")
             else:
                 print('Invalid lab number!')
 
